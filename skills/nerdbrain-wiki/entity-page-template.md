@@ -10,7 +10,7 @@ local-paths:
   - {host: <hostname>, path: <absolute-path>}
 linear:              # REQUIRED — never leave empty or placeholder
   team: <team-key>   # from `linear team list` (e.g. NER)
-  project: <uuid>    # full project UUID from `linear project view <name> -j`
+  project: <uuid>    # `id` from `linear project list --team <key> -j`
 # If the project has no Linear counterpart, replace the whole block with:
 # linear: none
 related: []
