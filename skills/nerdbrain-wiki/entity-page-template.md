@@ -8,9 +8,11 @@ slug: <slug>
 remote: <git-remote-url-or-empty>
 local-paths:
   - {host: <hostname>, path: <absolute-path>}
-linear:
-  team: <team-key>
-  project: <uuid>
+linear:              # REQUIRED — never leave empty or placeholder
+  team: <team-key>   # from `linear team list` (e.g. NER)
+  project: <uuid>    # full project UUID from `linear project view <name> -j`
+# If the project has no Linear counterpart, replace the whole block with:
+# linear: none
 related: []
 ---
 
