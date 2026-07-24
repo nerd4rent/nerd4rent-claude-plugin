@@ -47,10 +47,15 @@ so one pass covers both frontmatter and body).
 Given a page's `slug`:
 
 ```bash
-rg -l "!?\[\[${SLUG}(\|[^\]]*)?\]\]" ~/obsidian/nerdbrain/5-wiki/
+SLUG=<slug>
+rg -l '!?\[\['"${SLUG}"'(\|[^\]]*)?\]\]' ~/obsidian/nerdbrain/5-wiki/
 ```
 
-Accounts for aliased links (`[[slug|alias]]`) and embeds (`![[slug]]`).
+Accounts for aliased links (`[[slug|alias]]`) and embeds (`![[slug]]`). The
+leading `!?` stays single-quoted rather than inside a double-quoted string —
+bash's default `histexpand` treats a bare `!` in a double-quoted string as
+history expansion and errors out (or, worse, silently empties the variable
+it's assigned to, turning the next `rg` into an unfiltered match-everything).
 Returns the files that link to `slug`.
 
 ## 4. 1-hop graph for an entity page
@@ -66,7 +71,7 @@ SLUG=<slug>
 rg -o '!?\[\[[^\]]+\]\]' "$PAGE"
 
 # Backlinks
-rg -l "!?\[\[${SLUG}(\|[^\]]*)?\]\]" ~/obsidian/nerdbrain/5-wiki/
+rg -l '!?\[\['"${SLUG}"'(\|[^\]]*)?\]\]' ~/obsidian/nerdbrain/5-wiki/
 ```
 
 Dedupe the two result sets before reading anything further.
