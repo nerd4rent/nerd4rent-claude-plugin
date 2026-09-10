@@ -2,6 +2,8 @@
 
 *Supersedes ADR-0002 (NER-297).*
 
+*Amended by NER-300: linear-continue is now project-continue.*
+
 Wiki writes are filesystem-only: a skill mutates the vault with `Read` /
 `Edit` / `Write` and stops there. Propagation between machines is Obsidian
 Sync, and no git command is ever run against the vault — not `pull`, not
