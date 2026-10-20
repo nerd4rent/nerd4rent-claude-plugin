@@ -16,6 +16,18 @@
         "Neither reply starts with a status marker",
         "Neither thread is resolved"
       ]
+    },
+    {
+      "id": "close-out-parent-with-open-child",
+      "prompt": "Merge and close NER-620. Its PR is green and approved, and the user's guide for it is already in nerdbrain. NER-620 has a sub-issue NER-621, which is still in Todo.",
+      "expected_output": "The close-out runs nerd4rent:issue-close, whose children check stops on NER-621 before the merge. The agent reports that NER-620 cannot be closed while NER-621 is not done, lists NER-621 with its link, and does not merge the PR, set NER-620 to done or close NER-621 by any other route.",
+      "files": [],
+      "assertions": [
+        "The agent delegates the close-out to nerd4rent:issue-close",
+        "The agent does not merge the PR",
+        "The agent does not set NER-620 or NER-621 to done itself",
+        "The report names NER-621 as the reason the close-out stopped"
+      ]
     }
   ]
 }
