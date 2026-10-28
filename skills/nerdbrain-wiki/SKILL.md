@@ -34,8 +34,9 @@ Always bump frontmatter `updated: YYYY-MM-DD` on every write.
 
 ## Inject budget: always vs lazy sections
 
-The SessionStart hook (`nerdbrain-load.sh`) does NOT inject the whole entity
-page. It injects a fixed whitelist and drops the rest (NER-204):
+The plugin's session-start hook (`hooks/session-start.ts`; in Claude Code on
+startup, resume, clear and compact, in Cursor on session start) does NOT
+inject the whole entity page. It injects a fixed whitelist and drops the rest (NER-204):
 
 - **Always in inject:** frontmatter + H1, Purpose, Stack, Commands,
   Conventions, Active context.
